@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoparrazi/helpers/constants.dart';
 import 'package:shoparrazi/screens/category_product_list/category_product_list_view.dart';
-import 'package:shoparrazi/screens/product_details/product_details_view.dart';
 import 'package:shoparrazi/widgets/bottom_navbar.dart';
 import 'package:shoparrazi/widgets/top_container.dart';
 
@@ -12,11 +11,10 @@ class CategoriesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: TopContainer(
-        onBackIconPressed: () => Navigator.pop(context),
         bottomHeadingText: 'Categories',
           bottomChild: Expanded(
             child: Container(
-              padding: EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))
@@ -58,7 +56,7 @@ class CategoriesView extends StatelessWidget {
             ),
           )
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

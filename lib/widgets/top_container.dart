@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoparrazi/screens/cart/cart_view.dart';
 import '../helpers/constants.dart';
 
 class TopContainer extends StatelessWidget {
@@ -7,10 +8,10 @@ class TopContainer extends StatelessWidget {
     this.textTitle,
     this.bottomHeadingText,
     this.topChildren,
-    this.onBackIconPressed,
-    this.onCartIconPressed,
     required this.bottomChild,
+    this.includeCartIcon,
     this.containerBackGround = primaryDullGreen,
+    this.includeBackIcon
   });
 
   /*
@@ -23,9 +24,9 @@ class TopContainer extends StatelessWidget {
   final String? bottomHeadingText;
   final List<Widget>? topChildren;
   final Widget? bottomChild;
-  final VoidCallback? onBackIconPressed;
-  final VoidCallback? onCartIconPressed;
   final Color containerBackGround;
+  final bool? includeCartIcon;
+  final bool? includeBackIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +43,24 @@ class TopContainer extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        textTitle == null ? IconButton(
-                            onPressed: onBackIconPressed, icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 22, color: Colors.white,)
-                        ) : Text(textTitle!, style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        textTitle == null ? includeBackIcon != false ? InkWell(
+                            onTap: () => Navigator.pop(context),
+                            child: const Icon(
+                              Icons.arrow_back_ios_new_rounded,
+                              size: 22,
+                              color: Colors.white,
+                            )
+                        ) : const SizedBox(height: 35,) : Text(
+                            textTitle!,
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: Colors.white
-                        )
+                            )
                         ),
-                        IconButton(
-                            onPressed: onCartIconPressed,
+                        includeCartIcon != false ? IconButton(
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const CartView())),
                             icon: const Icon(Icons.shopping_cart_outlined, size: 22,
                               color: Colors.white,)
-                        )
+                        ) :  const SizedBox()
                       ],
                     ),
                   ),

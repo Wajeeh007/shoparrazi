@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shoparrazi/screens/main_screen/main_screen_view.dart';
 import 'package:shoparrazi/screens/auth/login/login_view.dart';
-
 import 'helpers/constants.dart';
 import 'helpers/theme_helper.dart';
 
@@ -47,7 +45,7 @@ class MyApp extends StatelessWidget {
         splashColor: Colors.transparent,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const AppBarBottomNavBarView(),
+      home: const LoginView(),
     );
   }
 }

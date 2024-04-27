@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoparrazi/helpers/constants.dart';
 import 'package:shoparrazi/screens/auth/sign_up/sign_up_view.dart';
+import 'package:shoparrazi/screens/main_screen/main_screen_view.dart';
 import 'package:shoparrazi/widgets/buttons.dart';
 import 'package:shoparrazi/widgets/textfields.dart';
 
@@ -52,7 +53,11 @@ class LoginView extends StatelessWidget {
                   contentPadding: EdgeInsets.symmetric( vertical: 15),
                 ),
               ),
-              MainButton(onPressed: () {}, title: 'Login'),
+              MainButton(
+                  onPressed: () => Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (BuildContext context) => const MainScreen()), (route) => false),
+                  title: 'Login'),
               Align(
                 alignment: Alignment.centerRight,
                   child: TextButton(

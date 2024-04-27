@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shoparrazi/helpers/constants.dart';
 import 'package:shoparrazi/widgets/buttons.dart';
-
 import '../../../widgets/textfields.dart';
+import '../../main_screen/main_screen_view.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -58,7 +58,9 @@ class SignUpView extends StatelessWidget {
                   contentPadding: EdgeInsets.symmetric( vertical: 15),
                 ),
               ),
-              MainButton(onPressed: () {}, title: 'Sign Up'),
+              MainButton(onPressed: () => Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (BuildContext context) => const MainScreen()), (route) => false), title: 'Sign Up'),
               Padding(
                 padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
                 child: Row(

@@ -80,7 +80,7 @@ class TextFieldWithTitle extends StatelessWidget {
         (title == null)
             ? const SizedBox()
             : Padding(
-          padding: const EdgeInsets.only(bottom: 8.5),
+          padding: const EdgeInsets.only(bottom: 8.5, left: 8),
           child: RichText(
             text: TextSpan(
               text: title,
@@ -139,7 +139,7 @@ class TextFieldWithTitle extends StatelessWidget {
             ) : null,
             prefixIconConstraints: BoxConstraints.tight(const Size(40, 40)),
             contentPadding: contentPadding,
-            fillColor: textFieldFillGrey,
+            fillColor: fillColor,
             filled: filled,
             hintText: hintText,
             hintStyle: TextStyle(
@@ -195,6 +195,8 @@ class TextFieldWithoutTitle extends StatelessWidget {
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
   final void Function()? onTap;
+  final Color? borderColor;
+  final double? borderRadius;
 
   const TextFieldWithoutTitle({
     super.key,
@@ -219,7 +221,9 @@ class TextFieldWithoutTitle extends StatelessWidget {
     this.validator,
     this.inputFormatters,
     this.keyboardType,
-    this.titleTextStyle
+    this.titleTextStyle,
+    this.borderRadius,
+    this.borderColor
   });
 
   @override
@@ -242,40 +246,39 @@ class TextFieldWithoutTitle extends StatelessWidget {
         color: Colors.black,
       ),
       decoration: InputDecoration(
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: primaryTextGrey,
+        hintStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+          color: Colors.grey.shade600,
         ),
         prefixIcon: prefixIcon != null
             ? Icon(
           prefixIcon,
-          color: primaryTextGrey,
+          color: Colors.grey.shade600,
           size: 30,
         ) : null,
         prefixIconConstraints: BoxConstraints.tight(const Size(70, 40)),
         contentPadding: contentPadding,
         suffixIcon: suffixIcon,
         filled: true,
-        fillColor: Colors.white,
+        fillColor: fillColor ?? Colors.white,
         hintText: hintText,
         errorStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
           color: Colors.red,
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: primaryGreen, width: 1.2),
-          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(color: borderColor ?? primaryGreen, width: 1.2),
+          borderRadius: BorderRadius.circular(borderRadius ?? 30),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide:
-          const BorderSide(color: primaryGreen, width: 1.5),
-          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(color: borderColor ?? primaryGreen, width: 1.5),
+          borderRadius: BorderRadius.circular(borderRadius ?? 30),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.red, width: 1),
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(borderRadius ?? 30),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.red, width: 1.5),
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(borderRadius ?? 30),
         ),
       ),
     );
@@ -306,6 +309,7 @@ class RoundedRectTextField extends StatelessWidget {
   final void Function(String)? onChanged;
   final void Function()? onTap;
   final Color borderColor;
+  final double? borderRadius;
 
   const RoundedRectTextField({
     super.key,
@@ -331,7 +335,8 @@ class RoundedRectTextField extends StatelessWidget {
     this.inputFormatters,
     this.keyboardType,
     this.titleTextStyle,
-    this.borderColor = Colors.white
+    this.borderColor = Colors.white,
+    this.borderRadius,
   });
 
   @override
@@ -355,7 +360,7 @@ class RoundedRectTextField extends StatelessWidget {
       ),
       decoration: InputDecoration(
         hintStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
-          color: primaryTextGrey,
+          color: Colors.grey.shade600,
         ),
         prefixIcon: prefixIcon != null
             ? Icon(
@@ -374,20 +379,20 @@ class RoundedRectTextField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: borderColor, width: 1.2),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(borderRadius ?? 15),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide:
           BorderSide(color: borderColor, width: 1.5),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(borderRadius ?? 15),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.red, width: 1),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(borderRadius ?? 15),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.red, width: 1.5),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(borderRadius ?? 15),
         ),
       ),
     );

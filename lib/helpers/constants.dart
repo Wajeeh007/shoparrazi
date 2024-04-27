@@ -46,13 +46,26 @@ const productsList = <Map<String, dynamic>>[
   {
     'name': 'Peas',
     'price': 50,
-    'rating': 4,
+    'rating': 4.0,
     'available_quantity': 35,
   },
   {
     'name': 'Onion',
     'price': 20,
-    'rating': 5,
+    'rating': 5.0,
     'available_quantity': 5,
   },
+];
+
+List currencyList = <Map<String, dynamic>>[
+  {
+    'title': 'USD',
+    'full_form': 'United States Dollar',
+    'selected': false,
+  },
+  {
+    'title': 'PKR',
+    'full_form': 'Pakistani Rupee',
+    'selected': true
+  }
 ];
